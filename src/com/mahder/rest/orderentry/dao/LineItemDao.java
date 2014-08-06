@@ -80,6 +80,19 @@ public class LineItemDao {
 		}
 		return lineItemList;
 	}
+	
+	public ResultSet getAllLineItemsResultSet(){
+		ResultSet rSet = null;
+		try{
+			String sqlStr = "select * from tbl_line_item";
+			PreparedStatement pStmt = MySQLConnection.getPreparedStatement(sqlStr);
+			rSet = MySQLConnection.readFromDatabase(pStmt);
+			return rSet;
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return rSet;
+	}
 
 	public LineItem getLineItem(int id) {
 		LineItem lineItem = null;

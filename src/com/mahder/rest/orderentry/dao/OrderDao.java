@@ -86,6 +86,18 @@ public class OrderDao {
 		}
 		return orderList;
 	}
+	
+	public ResultSet getAllOrdersResultSet(){
+		ResultSet rSet = null;
+		try{
+			String sqlStr = "select * from tbl_order order by order_date desc";
+			PreparedStatement pStmt = MySQLConnection.getPreparedStatement(sqlStr);
+			rSet = MySQLConnection.readFromDatabase(pStmt);			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return rSet;
+	}
 
 	public Order getOrder(int id) {
 		Order order = null;

@@ -68,6 +68,33 @@ public class CustomerDao {
 			MySQLConnection.disconnectDatabase();
 		}
 	}
+	
+	public ResultSet getAllCustomersResultSet(){
+		ResultSet rSet = null;
+		try{
+			String sqlStr = "select * from tbl_customer order by first_name, last_name";
+			PreparedStatement pStmt = MySQLConnection.getPreparedStatement(sqlStr);
+			rSet = MySQLConnection.readFromDatabase(pStmt);
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			//MySQLConnection.disconnectDatabase();
+		}
+		return rSet;
+	}
+	
+	public ResultSet getCustomerResultSet(int id){
+		ResultSet rSet = null;
+		try{
+			String sqlStr = "select * from tbl_customer where id = ?";
+			PreparedStatement pStmt = MySQLConnection.getPreparedStatement(sqlStr);
+			pStmt.setInt(1, id);
+			rSet = MySQLConnection.readFromDatabase(pStmt);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return rSet;
+	}
 
 	public List<Customer> getAllCustomers() {
 		List<Customer> customerList = new ArrayList<Customer>();

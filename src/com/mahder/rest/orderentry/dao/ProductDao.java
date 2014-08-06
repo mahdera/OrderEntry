@@ -80,6 +80,18 @@ public class ProductDao {
 		}
 		return productList;
 	}
+	
+	public ResultSet getAllProductsResultSet(){
+		ResultSet rSet = null;
+		try{
+			String sqlStr = "select * from tbl_product order by name";
+			PreparedStatement pStmt = MySQLConnection.getPreparedStatement(sqlStr);
+			rSet = MySQLConnection.readFromDatabase(pStmt);			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return rSet;
+	}
 
 	public Product getProduct(int id) {
 		Product product = null;
