@@ -93,6 +93,20 @@ public class LineItemDao {
 		}
 		return rSet;
 	}
+	
+	public ResultSet getLineItemResultSet(int id){
+		ResultSet rSet = null;
+		try{
+			String sqlStr = "select * from tbl_line_item where id = ?";
+			PreparedStatement pStmt = MySQLConnection.getPreparedStatement(sqlStr);
+			pStmt.setInt(1, id);
+			rSet = MySQLConnection.readFromDatabase(pStmt);
+			return rSet;
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return rSet;
+	}
 
 	public LineItem getLineItem(int id) {
 		LineItem lineItem = null;

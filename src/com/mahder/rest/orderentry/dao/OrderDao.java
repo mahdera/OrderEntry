@@ -87,6 +87,19 @@ public class OrderDao {
 		return orderList;
 	}
 	
+	public ResultSet getOrderResultSet(int id){
+		ResultSet rSet = null;
+		try{
+			String sqlStr = "select * from tbl_order where id = ?";
+			PreparedStatement pStmt = MySQLConnection.getPreparedStatement(sqlStr);
+			pStmt.setInt(1, id);
+			rSet = MySQLConnection.readFromDatabase(pStmt);			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return rSet;
+	}
+	
 	public ResultSet getAllOrdersResultSet(){
 		ResultSet rSet = null;
 		try{

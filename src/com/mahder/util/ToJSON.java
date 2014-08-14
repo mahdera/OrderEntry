@@ -53,6 +53,7 @@ public class ToJSON {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
+		System.out.println(jsonArray.toString());
 		return jsonArray;
 	}
 	

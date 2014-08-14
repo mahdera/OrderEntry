@@ -10,6 +10,7 @@ import java.util.List;
 
 import com.mahder.rest.orderentry.datasource.MySQLConnection;
 import com.mahder.rest.orderentry.model.Product;
+import com.mysql.jdbc.jdbc2.optional.MysqlConnectionPoolDataSource;
 
 /**
  * @author alemayehu
@@ -87,6 +88,18 @@ public class ProductDao {
 			String sqlStr = "select * from tbl_product order by name";
 			PreparedStatement pStmt = MySQLConnection.getPreparedStatement(sqlStr);
 			rSet = MySQLConnection.readFromDatabase(pStmt);			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return rSet;
+	}
+	
+	public ResultSet getProductResultSet(int id){
+		ResultSet rSet = null;
+		try{
+			String sqlStr = "select * from tbl_product where id = ?";
+			PreparedStatement pStmt = MySQLConnection.getPreparedStatement(sqlStr);
+			rSet = MySQLConnection.readFromDatabase(pStmt);
 		}catch(Exception e){
 			e.printStackTrace();
 		}

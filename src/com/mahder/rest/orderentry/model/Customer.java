@@ -20,6 +20,29 @@ public class Customer {
 	public Customer() {
 	}
 
+	public Customer(String firstName, String lastName, String street,
+			String city, String state, String zip, String country) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.street = street;
+		this.city = city;
+		this.state = state;
+		this.zip = zip;
+		this.country = country;
+	}
+
+	public Customer(int id, String firstName, String lastName, String street,
+			String city, String state, String zip, String country) {
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.street = street;
+		this.city = city;
+		this.state = state;
+		this.zip = zip;
+		this.country = country;
+	}
+
 	public int getId() {
 		return id;
 	}

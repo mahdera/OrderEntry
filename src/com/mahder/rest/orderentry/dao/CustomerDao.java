@@ -74,6 +74,7 @@ public class CustomerDao {
 		try{
 			String sqlStr = "select * from tbl_customer order by first_name, last_name";
 			PreparedStatement pStmt = MySQLConnection.getPreparedStatement(sqlStr);
+			//System.out.println(pStmt);
 			rSet = MySQLConnection.readFromDatabase(pStmt);
 		}catch(Exception e){
 			e.printStackTrace();
